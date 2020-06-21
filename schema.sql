@@ -30,7 +30,7 @@ CREATE TABLE Employees (
   PRIMARY KEY (id)
 );
 
-SELECT Departments.id, Roles.id, Employees.id
-FROM ((Departments
-INNER JOIN Roles ON Departments.id = Customers.CustomerID)
-INNER JOIN Employees ON Orders.ShipperID = Shippers.ShipperID);
+-- SELECT Departments.id, Roles.id, Employees.id
+-- FROM ((Departments
+-- INNER JOIN Roles ON Departments.id = Customers.CustomerID)
+-- INNER JOIN Employees ON Orders.ShipperID = Shippers.ShipperID);
