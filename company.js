@@ -85,8 +85,8 @@ function mainMenu() {
 //------------------------------------
 
 function viewEmployees() {
-  var queryStr =
-    "SELECT Employees.id, Employees.first_name, Employees.last_name, Roles.title, Departments.name as department, Roles.salary, Employees.manager_id FROM ((Departments INNER JOIN Roles ON Departments.id = Roles.department_id) INNER JOIN Employees ON Employees.role_id = Roles.id)";
+  let queryStr =
+    "SELECT Employees.id, Employees.first_name AS 'First Name', Employees.last_name AS 'Last Name', Roles.title AS 'Title', Departments.name AS 'Department', Roles.salary AS 'Salary', Employees.manager_id AS 'Manager ID' FROM ((Departments INNER JOIN Roles ON Departments.id = Roles.department_id) INNER JOIN Employees ON Employees.role_id = Roles.id) ORDER BY Employees.id";
   connection.query(queryStr, function (err, data) {
     if (err) throw err;
 
@@ -96,20 +96,20 @@ function viewEmployees() {
 }
 
 function viewRoles() {
-  var queryStr = "SELECT * FROM Roles";
+  let queryStr =
+    "SELECT Roles.id, Roles.title AS 'Title', Roles.salary As 'Salary' FROM Roles ORDER BY Roles.id";
   connection.query(queryStr, function (err, data) {
     if (err) throw err;
-
     console.table(data);
     mainMenu();
   });
 }
 
 function viewDepartments() {
-  var queryStr = "SELECT * FROM Departments";
+  var queryStr =
+    "SELECT Departments.id, Departments.name AS 'Department' FROM Departments ORDER BY Departments.id";
   connection.query(queryStr, function (err, data) {
     if (err) throw err;
-
     console.table(data);
     mainMenu();
   });
@@ -117,29 +117,55 @@ function viewDepartments() {
 
 // // function to add Employee
 // function addEmployee() {
+//   var employees = [];
+//   var roles = [];
+//   var loadRoles = function(){
+//     var queryStr = "SELECT title FROM role;";
+//     connection.queryStr(queryStr function(err, res){
+//       if (err) throw err;
+//       for(var i = 0; i < res.length; i++){
+//         employees.push(res[i].first_name)
+//       }
+//     })
+//   }
+//   loadRoles();
+//   loadEmployees();
 //   inquirer
 //     .prompt({
-//       name: "add",
-//       type: "rawlist",
-//       message: "What would you like to add?",
-//       choices: ["Department", "Role", "Employee"],
+//       name: "firstName",
+//       type: "input",
+//       message: "What is the new employee's first name?",
+//     },
+//     {
+//       name: "lastName",
+//       type: "input",
+//       message: "What is the new employee's last name?",
+//     },
+//     {
+//       name: "role",
+//       type: "input",
+//       message: "What is the new employee's role?",
+//     },
+//     {
+//       name: "firstName",
+//       type: "input",
+//       message: "Who is the new employee's manager?",
 //     })
 //     .then(function (answer) {
-//       switch (answer.add) {
-//         case "Department":
-//           addDepartment();
-//           break;
+//       var queryStr = "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, (SELECT id FROM role WHERE title = ?), (SELECT id FROM employee AS e WHERE e.first_name = ?))";
 
-//         case "Role":
-//           addRole();
-//           break;
-
-//         case "Employee":
-//           addEmployee();
-//           break;
-//       }
 //     });
 // }
+
+// .then(function(answer){
+//   var query = "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, (SELECT id FROM role WHERE title = ?), (SELECT id FROM employee AS e WHERE e.first_name = ?))";
+//   var params = [answer.addEmpFirstName, answer.addEmpLastName, answer.addEmpRole, answer.addEmpManager];
+//   connection.query(query, params, function(err, res){
+//       if (err) throw err;
+//       console.log(`A new employee named ${answer.addEmpFirstName} ${answer.addEmpLastName} with the role ${answer.addEmpRole} has been added to the database. ${answer.addEmpManager} will be their manager`);
+//       employeeTracker();
+//   })
+// })
 
 // function to update Employee Role
 // function updateEmployee() {
