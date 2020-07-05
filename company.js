@@ -86,7 +86,7 @@ function mainMenu() {
 
 function viewEmployees() {
   let queryStr =
-    "SELECT Employees.id, Employees.first_name AS 'First Name', Employees.last_name AS 'Last Name', Roles.title AS 'Title', Departments.name AS 'Department', Roles.salary AS 'Salary', Employees.manager_id AS 'Manager ID' FROM ((Departments INNER JOIN Roles ON Departments.id = Roles.department_id) INNER JOIN Employees ON Employees.role_id = Roles.id) ORDER BY Employees.id";
+    "SELECT employees.id, employees.first_name AS 'First Name', employees.last_name AS 'Last Name', roles.title AS 'Title', departments.name AS 'Department', roles.salary AS 'Salary', employees.manager_id AS 'Manager ID' FROM ((departments INNER JOIN roles ON departments.id = roles.department_id) INNER JOIN employees ON employees.role_id = roles.id) ORDER BY employees.id";
   connection.query(queryStr, function (err, data) {
     if (err) throw err;
 
@@ -97,7 +97,7 @@ function viewEmployees() {
 
 function viewRoles() {
   let queryStr =
-    "SELECT Roles.id, Roles.title AS 'Title', Roles.salary As 'Salary' FROM Roles ORDER BY Roles.id";
+    "SELECT roles.id, roles.title AS 'Title', roles.salary As 'Salary' FROM roles ORDER BY roles.id";
   connection.query(queryStr, function (err, data) {
     if (err) throw err;
     console.table(data);
@@ -107,12 +107,30 @@ function viewRoles() {
 
 function viewDepartments() {
   var queryStr =
-    "SELECT Departments.id, Departments.name AS 'Department' FROM Departments ORDER BY Departments.id";
+    "SELECT departments.id, departments.name AS 'Department' FROM departments ORDER BY departments.id";
   connection.query(queryStr, function (err, data) {
     if (err) throw err;
     console.table(data);
     mainMenu();
   });
+}
+
+//function to add Department
+function addDepartment() {
+  inquirer
+    .prompt({
+      name: "department",
+      type: "input",
+      message: "What department would you like to add?",
+    })
+    .then(function (answer) {
+      let queryStr = "INSERT INTO departments SET ?";
+      connection.query(queryStr, answer.departments, function (err, data) {
+        if (err) throw err;
+        console.table(answer.department + " has been added.");
+        mainMenu();
+      });
+    });
 }
 
 // // function to add Employee
@@ -156,16 +174,6 @@ function viewDepartments() {
 
 //     });
 // }
-
-// .then(function(answer){
-//   var query = "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, (SELECT id FROM role WHERE title = ?), (SELECT id FROM employee AS e WHERE e.first_name = ?))";
-//   var params = [answer.addEmpFirstName, answer.addEmpLastName, answer.addEmpRole, answer.addEmpManager];
-//   connection.query(query, params, function(err, res){
-//       if (err) throw err;
-//       console.log(`A new employee named ${answer.addEmpFirstName} ${answer.addEmpLastName} with the role ${answer.addEmpRole} has been added to the database. ${answer.addEmpManager} will be their manager`);
-//       employeeTracker();
-//   })
-// })
 
 // function to update Employee Role
 // function updateEmployee() {

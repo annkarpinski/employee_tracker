@@ -1,6 +1,6 @@
 USE companyDB;
 
-INSERT INTO Departments (name)
+INSERT INTO departments (name)
     VALUES
         ('Executive'),
         ('Creative'),
@@ -8,7 +8,7 @@ INSERT INTO Departments (name)
         ('Human Resources'),
         ('Accounting');
 
-INSERT INTO Roles (title, salary, department_id)
+INSERT INTO roles (title, salary, department_id)
     VALUES
     ('Creative Director', 90000.00, 2),
     ('Copy Writer', 45000.00, 2),
@@ -17,7 +17,7 @@ INSERT INTO Roles (title, salary, department_id)
     ('Recruiter', 70000.00, 4),
     ('Executive Assistant', 60000.00, 1);
 
-INSERT INTO Employees (first_name, last_name, role_id)
+INSERT INTO employees (first_name, last_name, role_id)
     VALUES
         ('Donald', 'Draper', 2),
         ('Roger', 'Sterling', 1),
