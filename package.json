@@ -1,5 +1,5 @@
 {
-  "name": "du_homework12_employeetracker",
+  "name": "employee_tracker",
   "version": "1.0.0",
   "description": "Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as **C**ontent **M**anagement **S**ystems. In this homework assignment, your challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/annkarpinski/DU_Homework12_EmployeeTracker.git"
+    "url": "git+https://github.com/annkarpinski/employee_tracker.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/annkarpinski/DU_Homework12_EmployeeTracker/issues"
+    "url": "https://github.com/annkarpinski/employee_tracker/issues"
   },
-  "homepage": "https://github.com/annkarpinski/DU_Homework12_EmployeeTracker#readme",
+  "homepage": "https://github.com/annkarpinski/employee_tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^7.2.0",
