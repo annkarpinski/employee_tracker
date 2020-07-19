@@ -122,23 +122,23 @@ function viewDepartments() {
 // Functions to add data to database
 //------------------------------------
 
-//function to add Department
-function addDepartment() {
-  inquirer
-    .prompt({
-      name: "department",
-      type: "input",
-      message: "What department would you like to add?",
-    })
-    .then(function (answer) {
-      const queryStr = "INSERT INTO departments (name) VALUES (?)";
-      connection.query(queryStr, answer.departments, function (err, data) {
-        if (err) throw err;
-        console.table(answer.department + " has been added.");
-        mainMenu();
-      });
-    });
-}
+// //function to add Department
+// function addDepartment() {
+//   inquirer
+//     .prompt({
+//       name: "department",
+//       type: "input",
+//       message: "What department would you like to add?",
+//     })
+//     .then(function (answer) {
+//       const queryStr = "INSERT INTO departments (name) VALUES (?)";
+//       connection.query(queryStr, answer.departments, function (err, data) {
+//         if (err) throw err;
+//         console.table(answer.department + " has been added.");
+//         mainMenu();
+//       });
+//     });
+// }
 
 // //function to add Role
 // function addRole() {
