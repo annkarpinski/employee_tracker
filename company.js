@@ -131,10 +131,10 @@ function addDepartment() {
       message: "What department would you like to add?",
     })
     .then(function (answer) {
-      let deptQuery = "INSERT INTO departments (name) VALUES (?)";
-      connection.query(deptQuery, answer.departments, function (err, res) {
+      let queryStr = "INSERT INTO departments (name) VALUES (?)";
+      connection.query(queryStr, answer.department, function (err, res) {
         if (err) throw err;
-        console.log(answer.departments + " has been added.");
+        console.log(answer.department + " has been added.");
         mainMenu();
       });
     });
