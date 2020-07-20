@@ -140,27 +140,6 @@ function addDepartment() {
     });
 }
 
-// var addDepartment = function () {
-//   inquirer
-//     .prompt({
-//       name: "addDept",
-//       type: "input",
-//       message:
-//         "Enter the name of the new department you would like to add to the database:",
-//     })
-//     .then(function (answer) {
-//       var query = "INSERT INTO departments (name) VALUES (?)";
-//       var params = [answer.addDept];
-//       connection.query(query, params, function (err, res) {
-//         if (err) throw err;
-//         console.log(
-//           `A new department called ${answer.addDept} has been added to the database`
-//         );
-//         mainMenu();
-//       });
-//     });
-// };
-
 // //function to add Role
 // function addRole() {
 //   const department = [];
