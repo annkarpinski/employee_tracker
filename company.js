@@ -162,10 +162,10 @@ function addDepartment() {
 //       },
 //     ])
 //     .then(function (answer) {
-//       let queryStr = "INSERT INTO roles ";
-//       connection.query(queryStr, answer.roles, function (err, data) {
+//       let queryStr = "INSERT INTO roles (name) VALUES (?)";
+//       connection.query(queryStr, answer.role, function (err, data) {
 //         if (err) throw err;
-//         console.table(answer.roles + " has been added.");
+//         console.table(answer.role + " has been added.");
 //         mainMenu();
 //       });
 //     });
@@ -243,14 +243,6 @@ function addEmployee() {
 //       choices: ["Manager", "Employee"],
 //     })
 //     .then(function (answer) {
-//       switch (answer.update) {
-//         case "Manager":
-//           updateManager();
-//           break;
-
-//         case "Employee":
-//           updateEmployee();
-//           break;
 //       }
 //     });
 // }
